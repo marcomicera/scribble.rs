@@ -30,7 +30,7 @@
                 {{end}}
                 <form id="lobby-create" class="input-container" action="/lobby/create" method="POST">
                     <b>Nome della stanza</b>
-                    <input class="input-item" name="lobby_password" placeholder="Enter your password or leave empty"
+                    <input class="input-item" name="lobby_password" placeholder="Inserisci un nome per creare una stanza dedicata, altrimenti lascia questo campo vuoto"
                         type="password" value="{{.Password}}" />
                     <b>Tempo</b>
                     <input class="input-item" type="number" name="drawing_time" min="{{.MinDrawingTime}}"
@@ -44,13 +44,12 @@
                     <b>Parole personalizzate</b>
                     <textarea class="input-item" name="custom_words"
                         placeholder="Inserisci parole aggiuntive, separate da una virgola">{{.CustomWords}}</textarea>
-                    <b>Custom Words Chance</b>
+                    <b>Probabilità parole personalizzate</b>
                     <input type="range" name="custom_words_chance" min="1" max="100" value="{{.CustomWordsChance}}">
-                    <b>Clients per IP Limit</b>
+                    <b>Limite dispositivi per indirizzo IP</b>
                     <input class="input-item" type="number" name="clients_per_ip_limit" min="{{.MinClientsPerIPLimit}}"
                         max="{{.MaxClientsPerIPLimit}}" value="{{.ClientsPerIPLimit}}" />
-                    <button type="submit" form="lobby-create" style="grid-column-start: 1; grid-column-end: 3;">Open
-                        Lobby</button>
+                    <button type="submit" form="lobby-create" style="grid-column-start: 1; grid-column-end: 3;">Inizia!</button>
                 </form>
             </div>
         </div>
