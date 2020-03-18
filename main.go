@@ -2,11 +2,13 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"html/template"
 	"log"
 	"math/rand"
 	"net/http"
 	"os"
+	"strconv"
 	"time"
 )
 
@@ -16,14 +18,20 @@ var (
 )
 
 func main() {
-	portHTTP = flag.Int("portHTTP", 8080, "defines the port to be used for http mode")
+	// "When you deploy an app through heroku, it does not allow you to specify the port number"
+	// https://stackoverflow.com/a/51344239/3927431
+	portHTTP = new(int)
+	var parseError error
+	*portHTTP, parseError = strconv.Atoi(os.Getenv("PORT"))
+	if parseError != nil {
+		panic(parseError)
+	}
 
 	flag.Parse()
 
 	//Setting the seed in order for the petnames to be random.
 	rand.Seed(time.Now().UnixNano())
 
-	var parseError error
 	errorPage, parseError = template.New("").ParseFiles("error.html", "footer.html")
 	if parseError != nil {
 		panic(parseError)
@@ -31,9 +39,7 @@ func main() {
 
 	setupRoutes()
 
-	// "When you deploy an app through heroku, it does not allow you to specify the port number"
-	// https://stackoverflow.com/a/51344239/3927431
-	log.Fatal(http.ListenAndServe(":" + os.Getenv("PORT"), nil))
+	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%d", *portHTTP), nil))
 }
 
 func setupRoutes() {
