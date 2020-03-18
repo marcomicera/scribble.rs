@@ -180,7 +180,7 @@
     }
 
     console.log("Attempting Connection...");
-    const socket = new WebSocket("ws://" + location.hostname + ":{{.Port}}/ws?id={{.LobbyID}}");
+    const socket = new WebSocket("wss://" + location.hostname + ":{{.Port}}/ws?id={{.LobbyID}}");
 
     const messageInput = document.getElementById("message-input");
     const playerContainer = document.getElementById("player-container");
