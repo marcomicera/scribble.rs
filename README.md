@@ -1,4 +1,4 @@
-# Scribble.rs
+# Scribbol
 
 [![CircleCI](https://circleci.com/gh/scribble-rs/scribble.rs.svg?style=svg)](https://circleci.com/gh/scribble-rs/scribble.rs)
 [![codecov](https://codecov.io/gh/scribble-rs/scribble.rs/branch/master/graph/badge.svg)](https://codecov.io/gh/scribble-rs/scribble.rs)
